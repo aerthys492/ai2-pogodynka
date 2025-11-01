@@ -1,0 +1,19 @@
+App\Entity\Measurement:
+    properties:
+        location:
+            - NotBlank: { groups: ['create', 'edit'] }
+
+        date:
+            - NotBlank: { groups: ['create', 'edit'] }
+            - Type:
+                  type: DateTimeInterface
+                  message: 'Invalid date format.'
+                  groups: ['create', 'edit']
+
+        celsius:
+            - NotBlank: { groups: ['create', 'edit'] }
+            - Range:
+                  min: -60
+                  max: 60
+                  notInRangeMessage: 'Temperature must be between -60°C and +60°C.'
+                  groups: ['create', 'edit']
